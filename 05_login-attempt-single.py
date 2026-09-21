@@ -44,17 +44,26 @@ def perform_login_attempt(url, endpoint, data):
             response_json = {"message": "Response content was not valid JSON."}
 
         # Check for success (usually 200 OK) or failure status
-        #TODO Why Login Statusis UNEXPECTED RESPONSE (200) when Response Body has "{'authentication': {'token': ...""
-        if response.status_code == 200 and 'token' in response_json:
+        # Juice Shop may return a nested structure like {'authentication': {'token': '...'}}
+        token = None
+        if isinstance(response_json, dict):
+            token = response_json.get('token') or response_json.get('authentication', {}).get('token')
+
+        if response.status_code == 200 and token:
             print("Login Status: SUCCESS!")
-            print(f"User Token (Authentication Successful): {response_json.get('token')[:30]}...")
+            print(f"User Token (Authentication Successful): {token[:30]}...")
             print("--- The user was successfully authenticated. ---")
-        elif response.status_code == 401 or response.status_code == 403:
+        elif response.status_code in (401, 403):
             # Juice Shop typically returns 401 for bad credentials
             error_message = response_json.get('error', response_json.get('message', 'Authentication Failed'))
             print(f"Login Status: FAILED (Unauthorized/Forbidden)")
             print(f"Error Detail: {error_message}")
             print("--- Authentication failed due to incorrect credentials or missing user. ---")
+        elif 200 <= response.status_code < 300:
+            # 2xx but no token present
+            print(f"Login Status: UNEXPECTED RESPONSE ({response.status_code})")
+            print("Note: Response is 2xx but no authentication token found in response JSON.")
+            print(f"Response Body: {response_json}")
         else:
             print(f"Login Status: UNEXPECTED RESPONSE ({response.status_code})")
             print(f"Response Body: {response_json}")

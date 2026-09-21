@@ -2,12 +2,13 @@ from selenium import webdriver
 
 import os
 from dotenv import load_dotenv
-load_dotenv()
+
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 import time
 
 # --- Configuration ---
+load_dotenv()
 TARGET_URL = os.getenv("TARGET_URL")
 
 def open_browser():

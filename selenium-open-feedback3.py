@@ -1,6 +1,3 @@
-import os
-load_dotenv()
-
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
@@ -79,7 +76,7 @@ def run_automation():
         # 4. Fill Captcha
         # The captcha input usually has an ID like 'captchaControl'
         captcha_field = driver.find_element(By.ID, "captchaControl")
-        captcha_field.send_keys("63")
+        captcha_field.send_keys("9")
         
         # 5. Simulate submit button click
         submit_button = driver.find_element(By.ID, "submitButton")  # Adjust selector if needed

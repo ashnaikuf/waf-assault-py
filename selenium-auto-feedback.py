@@ -2,7 +2,7 @@ from selenium import webdriver
 
 import os
 from dotenv import load_dotenv
-load_dotenv()
+
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
@@ -13,6 +13,7 @@ import requests
 import time
 
 # --- Configuration ---
+load_dotenv()
 TARGET_URL = os.getenv("TARGET_URL")
 LOGIN_API = f"{TARGET_URL}rest/user/login"
 FEEDBACK_API = f"{TARGET_URL}api/Feedbacks/"
@@ -66,7 +67,7 @@ def run_selenium_automation():
             comment = generate_random_comment()
             payload = {
                 "captchaId": 5,
-                "captcha": "-36",
+                "captcha": "9",
                 "comment": comment,
                 "rating": 2
             }

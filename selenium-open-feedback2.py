@@ -2,12 +2,13 @@ from selenium import webdriver
 
 import os
 from dotenv import load_dotenv
-load_dotenv()
+
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 import requests
 import time
 
+load_dotenv()
 # --- Configuration ---
 TARGET_URL = os.getenv("TARGET_URL")
 LOGIN_ENDPOINT = "rest/user/login"

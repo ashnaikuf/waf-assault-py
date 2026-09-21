@@ -1,0 +1,14 @@
+[project]
+name = "waf-assault-py"
+version = "0.1.0"
+description = "Refer readme"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "dotenv>=0.9.9",
+    "faker>=40.15.0",
+    "requests>=2.33.1",
+    "selenium>=4.43.0",
+    "selenium-wire>=5.1.0",
+    "webdriver-manager>=4.0.2",
+]
