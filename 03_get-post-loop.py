@@ -41,7 +41,7 @@ def run_enrollment_loop():
             print("Sending POST request...")
             post_response = requests.post(URL, headers=HEADERS, json=payload)
             print(f"POST Status: {post_response.status_code}")
-            print(f"POST Response: {post_response.text}")
+            # print(f"POST Response: {post_response.text}")
             
         except requests.exceptions.RequestException as e:
             print(f"POST request failed on iteration {i}: {e}")

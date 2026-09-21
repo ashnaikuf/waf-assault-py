@@ -1,11 +1,23 @@
 import requests
+from urllib.parse import urlparse
 
-# The FastAPI endpoint URL
-url = "https://randomizerapi.secureedge.xyz/random/1234"
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
+url = os.getenv("TARGET_URL_API")
+
+def get_host_from_url(url):
+    """Extract host from URL"""
+    parsed_url = urlparse(url)
+    return parsed_url.netloc
+
+host = get_host_from_url(url)
+print(f"Host: {host}")
 
 # Updated headers for a POST request delivering JSON data
 headers = {
-    "Host": "randomizerapi.secureedge.xyz",
+    "Host": get_host_from_url(url),
     "Accept-Encoding": "gzip, deflate",
     "Accept-Language": "en-us",
     "Accept": "application/json",

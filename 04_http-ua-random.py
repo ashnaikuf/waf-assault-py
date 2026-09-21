@@ -46,7 +46,7 @@ user_agents = [
 ]
 
 
-TARGET_URL = os.getenv("TARGET_URL")
+TARGET_URL = os.getenv("TARGET_URL_API")
 
 # The number of requests you want to send.
 num_requests = 10
