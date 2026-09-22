@@ -1,3 +1,10 @@
+# Educational WAF Testing Script: HTTP HEAD Method Requests
+# Purpose: Demonstrates using HEAD method to retrieve headers without response body
+# Learning Goal: Shows how WAFs handle different HTTP methods beyond GET/POST
+# WAF Context: Tests method-based filtering and whether WAFs treat HEAD differently
+# Comparison: Unlike GET (01_), HEAD requests metadata only without downloading content
+# Usage: Learn how servers and WAFs respond to HEAD method enumeration attempts
+
 import requests
 import time
 
@@ -20,24 +27,39 @@ def send_head_requests(url, count):
     It is used to retrieve response headers (metadata) only.
     """
     print(f"Starting {count} HEAD requests to: {url}\n")
+
+    # Set the headers for the request, including the random user agent.
+    headers = {
+        'User-Agent': "python HEAD UA Test 1.1"
+    }    
     
     for i in range(1, count + 1):
         print(f"--- Request {i}/{count} ---")
         try:
             # The requests library allows calling the HEAD method directly.
-            response = requests.request("HEAD", url, timeout=5)
-            
+            # Use requests.request() with method="HEAD" and allow_redirects=False to ensure HEAD method is preserved
+            response = requests.request("HEAD", url, headers=headers, timeout=5, allow_redirects=False)
+
+            # Print the HTTP method being used
+            print(f"HTTP Method: {response.request.method}")
+
+            # Print all request headers in a loop
+            print("Request Headers:")
+            for header_name, header_value in response.request.headers.items():
+                print(f"  {header_name}: {header_value}")
+            print()
+
             # Check for successful response (status codes in the 200s)
             if response.ok:
                 print(f"Status Code: {response.status_code} (OK)")
                 
                 # HEAD responses contain headers but an empty body.
-                print("\nReceived Response Headers (Metadata):")
-                print("==============================================")
+                # print("\nReceived Response Headers (Metadata):")
+                # print("==============================================")
                 # Iterate and print the response headers
-                for header, value in response.headers.items():
-                    print(f"{header}: {value}")
-                print("==============================================\n")
+                # for header, value in response.headers.items():
+                #     print(f"{header}: {value}")
+                # print("==============================================\n")
             else:
                 print(f"Status Code: {response.status_code} (Error)")
                 # Print a small excerpt of the body, though it should typically be empty for HEAD
@@ -51,6 +73,10 @@ def send_head_requests(url, count):
         time.sleep(0.1)
 
 if __name__ == "__main__":
+
+    print(f"--- HTTP HEAD requests attempt Started ---")
+    print(f"Target URL: {TARGET_URL}")
+
     send_head_requests(TARGET_URL, REQUEST_COUNT)
     print("Script finished.")
 
