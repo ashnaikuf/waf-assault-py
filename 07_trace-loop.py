@@ -36,6 +36,15 @@ def send_trace_requests(url, count):
             # The requests library allows calling the TRACE method directly.
             response = requests.request("TRACE", url, headers=headers,timeout=5 , allow_redirects=False)
             
+            # Print the HTTP method being used
+            print(f"HTTP Method: {response.request.method}")
+
+            # Print all request headers in a loop
+            print("Request Headers:")
+            for header_name, header_value in response.request.headers.items():
+                print(f"  {header_name}: {header_value}")
+            print()
+                        
             # Check for successful response (status codes in the 200s)
             if response.ok:
                 print(f"Status Code: {response.status_code} (OK)")
