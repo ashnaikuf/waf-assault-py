@@ -1,3 +1,10 @@
+# Educational WAF Testing Script: Single Login Attempt
+# Purpose: Demonstrates a legitimate login attempt with valid credentials
+# Learning Goal: Shows how WAFs inspect authentication requests and credential validation
+# WAF Context: Tests login form submission monitoring and credential stuffing detection
+# Comparison: Unlike brute-force scripts (11_, 21_), this uses one set of valid credentials
+# Usage: Establish baseline behavior for legitimate authentication before testing attacks
+
 import requests
 import json
 import time

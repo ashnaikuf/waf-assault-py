@@ -1,3 +1,10 @@
+# Educational WAF Testing Script: Server-Side Request Forgery (SSRF)
+# Purpose: Demonstrates SSRF attack attempts to access internal resources
+# Learning Goal: Shows how WAFs detect requests to internal/localhost addresses
+# WAF Context: Tests SSRF protection rules and internal network access prevention
+# Comparison: Unlike external requests, this targets internal services and metadata endpoints
+# Usage: Learn how WAFs prevent server-side requests to unauthorized destinations
+
 import os
 from dotenv import load_dotenv
 

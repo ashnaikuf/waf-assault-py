@@ -1,3 +1,10 @@
+# Educational WAF Testing Script: Repeated GET and POST Requests
+# Purpose: Demonstrates sending multiple sequential HTTP requests in a loop
+# Learning Goal: Shows how to generate sustained traffic patterns to observe WAF behavior
+# WAF Context: Tests rate limiting, request frequency detection, and pattern analysis
+# Comparison: Unlike single requests (01_, 02_), this creates repetitive traffic patterns
+# Usage: Observe how WAF responds to repeated requests over time
+
 import requests
 import time
 

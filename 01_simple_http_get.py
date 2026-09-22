@@ -1,3 +1,10 @@
+# Educational WAF Testing Script: Basic HTTP GET Request
+# Purpose: Demonstrates the simplest form of HTTP communication to a WAF-protected endpoint
+# Learning Goal: Shows how to craft a clean GET request with standard headers
+# WAF Context: Tests how a WAF handles legitimate-looking GET requests
+# Comparison: Unlike POST scripts (02_), this only retrieves data without sending a body
+# Usage: Run first to test basic connectivity and response from target application
+
 import requests
 from urllib.parse import urlparse
 

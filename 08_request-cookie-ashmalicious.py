@@ -1,3 +1,10 @@
+# Educational WAF Testing Script: Requests with Custom Cookies
+# Purpose: Demonstrates sending HTTP requests with potentially suspicious cookie values
+# Learning Goal: Shows how WAFs inspect and validate cookie content for malicious patterns
+# WAF Context: Tests cookie-based security rules and session token validation
+# Comparison: Unlike cookieless requests (01_-08_), this includes custom cookie headers
+# Usage: Learn how WAFs analyze cookie values for signs of session hijacking or XSS
+
 import requests
 import time
 import json
@@ -15,6 +22,16 @@ REQUEST_COUNT = 10
 # The key 'custom_cookie' is arbitrary; the value is the one requested.
 CUSTOM_COOKIES = {"custom_cookie": COOKIES}
 
+# Set the headers for the request, including the random user agent.
+# headers = {
+#     # Valid User-Agents
+#     # "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15"
+#     # Alternative User-Agents to try if the above still fails:
+#     # "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+#     # "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+
+# }  
+
 def send_cookie_requests(url, count, cookies):
     """
     Sends a specified number of HTTP GET requests to a given URL,
@@ -28,7 +45,7 @@ def send_cookie_requests(url, count, cookies):
         try:
             # Use the GET method (which is suitable for carrying cookies)
             # and pass the defined cookies dictionary directly.
-            response = requests.request("GET", url, cookies=cookies, timeout=5)
+            response = requests.request("GET", url,  cookies=cookies, timeout=5)
             
             # Check for successful response (status codes in the 200s)
             if response.ok:

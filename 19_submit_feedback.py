@@ -1,3 +1,10 @@
+# Educational WAF Testing Script: Automated Feedback Form Submission
+# Purpose: Demonstrates automated form submission using browser automation
+# Learning Goal: Shows how WAFs detect and handle automated form interactions
+# WAF Context: Tests bot detection, form submission rate limiting, and user behavior analysis
+# Comparison: Unlike HTTP requests (01_-18_), this simulates real browser interactions
+# Usage: Learn how WAFs differentiate between human users and automated scripts
+
 import os
 import time
 import random

@@ -1,3 +1,10 @@
+# Educational WAF Testing Script: Cross-Site Scripting (XSS) Attack
+# Purpose: Demonstrates XSS payload injection in request parameters
+# Learning Goal: Shows how WAFs detect and sanitize malicious JavaScript content
+# WAF Context: Tests XSS protection rules and script injection filtering
+# Comparison: Unlike safe content, this sends HTML/JavaScript tags to trigger WAF alerts
+# Usage: Learn how WAFs identify and block client-side attack vectors
+
 import requests
 import json
 

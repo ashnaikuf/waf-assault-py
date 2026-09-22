@@ -1,3 +1,10 @@
+# Educational WAF Testing Script: Repeated Login Attempts
+# Purpose: Demonstrates multiple login attempts with the same credentials in a loop
+# Learning Goal: Shows how WAFs detect repeated authentication attempts from same source
+# WAF Context: Tests account lockout mechanisms and login attempt rate limiting
+# Comparison: Unlike single login (05_), this creates patterns that may trigger WAF alerts
+# Usage: Observe how repeated valid logins are handled differently than brute force attempts
+
 import requests
 import json
 import time
@@ -19,13 +26,20 @@ payload = {
     "password": PASSWORD
 }
 
+
+
 def perform_login_attempt(url, endpoint, data):
     """
     Attempts to log in to the specified Juice Shop endpoint.
     """
     full_url = url + endpoint
     headers = {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        # Valid User-Agents
+        # "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15"
+        # Alternative User-Agents to try if the above still fails:
+        # "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+        # "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
     }
 
     print(f"--- Login Attempt Started ---")
@@ -45,7 +59,7 @@ def perform_login_attempt(url, endpoint, data):
             response_json = {"message": "Response content was not valid JSON."}
 
         # Check for success (usually 200 OK) or failure status
-        #TODO Why Login Statusis UNEXPECTED RESPONSE (200) when Response Body has "{'authentication': {'token': ...""
+        #TODO Why Login Status is UNEXPECTED RESPONSE (200) when Response Body has "{'authentication': {'token': ...""
         if response.status_code == 200 and 'token' in response_json:
             print("Login Status: SUCCESS!")
             print(f"User Token (Authentication Successful): {response_json.get('token')[:30]}...")

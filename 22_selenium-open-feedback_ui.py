@@ -1,3 +1,10 @@
+# Educational WAF Testing Script: Advanced Browser Automation with Form Interaction
+# Purpose: Demonstrates complex browser automation combining API calls with UI manipulation
+# Learning Goal: Shows hybrid attack patterns mixing headless requests with browser automation
+# WAF Context: Tests advanced bot detection for scripts that combine multiple interaction methods
+# Comparison: Unlike simple navigation (22_), this mixes API authentication with UI form filling
+# Usage: Learn how WAFs detect sophisticated automation that mimics complex user workflows
+
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By

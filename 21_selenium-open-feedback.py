@@ -1,3 +1,10 @@
+# Educational WAF Testing Script: Browser Automation for Page Navigation
+# Purpose: Demonstrates simple browser automation to navigate to application pages
+# Learning Goal: Shows basic browser fingerprinting and navigation pattern detection
+# WAF Context: Tests user agent validation and human-like browsing behavior analysis
+# Comparison: Unlike headless requests, this uses actual browser with full JavaScript execution
+# Usage: Learn how WAFs detect and validate legitimate browser vs automation tools
+
 from selenium import webdriver
 
 import os

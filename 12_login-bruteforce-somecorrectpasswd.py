@@ -1,3 +1,10 @@
+# Educational WAF Testing Script: Mixed Valid/Invalid Login Brute Force
+# Purpose: Demonstrates brute force attacks that include some valid credentials
+# Learning Goal: Shows how WAFs detect patterns where some attempts succeed
+# WAF Context: Tests account enumeration detection and mixed success rate analysis
+# Comparison: Unlike pure brute force (11_), this mixes invalid with valid credentials
+# Usage: Learn how WAFs handle brute force attempts with partial success patterns
+
 import requests
 import json
 import time

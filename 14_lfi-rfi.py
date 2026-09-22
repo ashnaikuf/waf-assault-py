@@ -1,3 +1,10 @@
+# Educational WAF Testing Script: Local/Remote File Inclusion (LFI/RFI)
+# Purpose: Demonstrates file inclusion attack attempts via path traversal
+# Learning Goal: Shows how WAFs detect directory traversal and file access attempts
+# WAF Context: Tests path traversal protection and file inclusion filtering rules
+# Comparison: Unlike normal file requests, this uses ../ sequences to access system files
+# Usage: Learn how WAFs block attempts to include sensitive server files
+
 import requests
 
 import os

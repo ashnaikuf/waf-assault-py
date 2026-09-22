@@ -1,3 +1,10 @@
+# Educational WAF Testing Script: SQL Injection Attack Simulation
+# Purpose: Demonstrates SQL injection payloads in query parameters
+# Learning Goal: Shows how WAFs detect and block SQL injection attempts
+# WAF Context: Tests SQL injection detection rules and database attack prevention
+# Comparison: Unlike normal queries, this sends SQL metacharacters to trigger WAF rules
+# Usage: Learn how WAFs identify malicious SQL patterns in user input
+
 import requests
 
 import os

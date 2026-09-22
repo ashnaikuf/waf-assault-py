@@ -1,3 +1,10 @@
+# Educational WAF Testing Script: Login Brute Force Attack
+# Purpose: Demonstrates systematic password guessing against a login endpoint
+# Learning Goal: Shows how WAFs detect and prevent credential stuffing attacks
+# WAF Context: Tests brute force protection, rate limiting, and IP blocking mechanisms
+# Comparison: Unlike valid logins (05_, 10_), this tries multiple wrong passwords
+# Usage: Learn how WAFs identify and block automated authentication attacks
+
 import requests
 import json
 import time

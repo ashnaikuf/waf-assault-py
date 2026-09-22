@@ -1,3 +1,10 @@
+# Educational WAF Testing Script: CRLF Injection Attack
+# Purpose: Demonstrates HTTP Response Splitting via CRLF character injection
+# Learning Goal: Shows how WAFs detect carriage return/line feed injection attempts
+# WAF Context: Tests header injection protection and HTTP response splitting prevention
+# Comparison: Unlike normal headers, this injects control characters to split HTTP responses
+# Usage: Learn how WAFs prevent header manipulation and response splitting attacks
+
 import requests
 import time
 import json
@@ -49,20 +56,20 @@ def send_crlf_simulation_requests(url, count, header_key, payload):
             if response.ok:
                 print(f"Status Code: {response.status_code} (OK)")
                 
-                print("\nResponse Headers Received (Server's View):")
-                print("==============================================")
+                # print("\nResponse Headers Received (Server's View):")
+                # print("==============================================")
                 
                 # Print all headers. webserver safely reflect the URL-encoded 
                 # value in the 'Target-Header' response header without breaking the response.
-                for header, value in response.headers.items():
-                    print(f"{header}: {value}")
+                # for header, value in response.headers.items():
+                #     print(f"{header}: {value}")
                     
-                print("==============================================\n")
-                print("Verification Note:")
-                print(f"The safe service {TARGET_URL} correctly sanitizes the input and")
-                print("includes the literal encoded CRLF in the header value.")
-                print("A vulnerable application would mistakenly terminate the 'Target-Header'")
-                print("and process 'Injected-Header: CRLF-Success' as a completely new header.")
+                # print("==============================================\n")
+                # print("Verification Note:")
+                # print(f"The safe service {TARGET_URL} correctly sanitizes the input and")
+                # print("includes the literal encoded CRLF in the header value.")
+                # print("A vulnerable application would mistakenly terminate the 'Target-Header'")
+                # print("and process 'Injected-Header: CRLF-Success' as a completely new header.")
 
             else:
                 print(f"Status Code: {response.status_code} (Error)")

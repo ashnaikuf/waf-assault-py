@@ -1,3 +1,10 @@
+# Educational WAF Testing Script: Random User-Agent Headers
+# Purpose: Demonstrates user-agent rotation to simulate diverse client environments
+# Learning Goal: Shows how changing User-Agent headers can affect WAF detection
+# WAF Context: Tests fingerprinting resistance and user-agent based blocking rules
+# Comparison: Unlike static headers (01_-03_), this varies browser identification
+# Usage: Observe if WAF treats different user-agents with varying levels of trust
+
 import requests
 import time
 import random

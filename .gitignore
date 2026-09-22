@@ -8,7 +8,9 @@ venv/
 .venv/
 env/
 ENV/
-
+_z*
+run*
+run*
 
 # IDE / Editor configurations
 .vscode/

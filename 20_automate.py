@@ -1,3 +1,10 @@
+# Educational WAF Testing Script: Automated Multi-Step Application Workflow
+# Purpose: Demonstrates complex automated workflows combining login and data submission
+# Learning Goal: Shows how WAFs track session-based automation patterns
+# WAF Context: Tests behavioral analysis, session tracking, and multi-endpoint automation detection
+# Comparison: Unlike single requests, this chains authentication with data manipulation
+# Usage: Learn how WAFs detect sophisticated automation beyond simple request repetition
+
 import requests
 import json
 import string

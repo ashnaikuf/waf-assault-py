@@ -1,3 +1,10 @@
+# Educational WAF Testing Script: Basic HTTP POST Request
+# Purpose: Demonstrates sending data to a WAF-protected endpoint using POST method
+# Learning Goal: Shows proper JSON payload structure and Content-Type headers
+# WAF Context: Tests how WAFs inspect and validate POST request bodies and headers
+# Comparison: Unlike GET (01_), this sends data in the request body to modify server state
+# Usage: Run after GET test to understand how WAFs handle data submission requests
+
 import requests
 from urllib.parse import urlparse
 
