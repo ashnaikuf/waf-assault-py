@@ -1,3 +1,10 @@
+# Educational WAF Testing Script: HTTP TRACE Method Requests
+# Purpose: Demonstrates TRACE method which echoes request headers back in response
+# Learning Goal: Shows how WAFs handle potentially dangerous HTTP methods
+# WAF Context: Tests method-based security controls since TRACE can expose sensitive headers
+# Comparison: Unlike HEAD (06_), TRACE returns request data which may reveal internal info
+# Usage: Learn if WAFs block TRACE method or allow this diagnostic functionality
+
 import requests
 import time
 
@@ -19,22 +26,26 @@ def send_trace_requests(url, count):
     """
     print(f"Starting {count} TRACE requests to: {url}\n")
     
+    # Set the headers for the request, including the random user agent.
+    headers = {
+        'User-Agent': "python TRACE UA Test 1.0"
+    }        
     for i in range(1, count + 1):
         print(f"--- Request {i}/{count} ---")
         try:
             # The requests library allows calling the TRACE method directly.
-            response = requests.request("TRACE", url, timeout=5)
+            response = requests.request("TRACE", url, headers=headers,timeout=5 , allow_redirects=False)
             
             # Check for successful response (status codes in the 200s)
             if response.ok:
                 print(f"Status Code: {response.status_code} (OK)")
                 
                 # The body of a TRACE response contains the request headers the server received
-                print("\nEchoed Request Body (Headers Received by Server):")
-                print("==============================================")
+                # print("\nEchoed Request Body (Headers Received by Server):")
+                # print("==============================================")
                 # Decode the response text to show the echoed request content
-                print(response.text.strip())
-                print("==============================================\n")
+                # print(response.text.strip())
+                # print("==============================================\n")
             else:
                 print(f"Status Code: {response.status_code} (Error)")
                 print(f"Response Content: {response.text[:150]}...\n")
